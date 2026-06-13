@@ -33,6 +33,7 @@ class ChannelPreset(TypedDict, total=False):
     tts_voice: str
     caption_font: str
     caption_font_name: str
+    min_words: int  # min word count for narration validation (single-variant)
     # Multi-variant mode — Groq returns translations for each lang, pipeline renders+uploads per variant.
     variants: list[Variant]
     # topic_rotation: "myth" → pipeline/myth_topics.py (IST day theme + no-repeat within theme)
@@ -204,6 +205,7 @@ PRESETS: dict[str, ChannelPreset] = {
         "label": "Hindi mythology & devotion Shorts (Ganesha → Shiva → … by IST day)",
         "topic_rotation": "myth",
         "language": "hi",
+        "min_words": 100,
         # Edge TTS Hindi: Swara = warm female (common for katha / devotion). Override: hi-IN-MadhurNeural (male).
         "tts_voice": "hi-IN-SwaraNeural",
         "caption_font": "NotoSansDevanagari-Bold.ttf",
@@ -300,6 +302,7 @@ PRESETS: dict[str, ChannelPreset] = {
     "ghost_stories": {
         "id": "ghost_stories",
         "label": "Ghost / horror storytime Short",
+        "min_words": 100,
         "groq_system_hint": (
             "You write spooky ghost story Shorts for YouTube. "
             "CRITICAL LENGTH RULE: The TOTAL word count across ALL 6 segments MUST be 120-140 words. "
