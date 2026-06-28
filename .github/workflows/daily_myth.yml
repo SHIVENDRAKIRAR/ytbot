@@ -2,7 +2,6 @@ name: Daily Hindi Myth Short
 
 on:
   schedule:
-    # 06:30 IST = 01:00 UTC; 18:30 IST = 13:00 UTC
     - cron: "0 1 * * *"
     - cron: "0 13 * * *"
   workflow_dispatch:
@@ -18,8 +17,6 @@ env:
   YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
   YT_CLIENT_SECRET_VALUE: ${{ secrets.YT_CLIENT_SECRET_VALUE }}
   YT_REFRESH_TOKEN_MYTH: ${{ secrets.YT_REFRESH_TOKEN_MYTH }}
-  # Optional: second bhakti channel (same video file uploaded twice).
-  # Set this secret if you want the same Short on another channel.
   YT_REFRESH_TOKEN_MYTH_2: ${{ secrets.YT_REFRESH_TOKEN_MYTH_2 }}
   YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
 

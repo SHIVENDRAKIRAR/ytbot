@@ -44,7 +44,6 @@ jobs:
       - name: Install Python deps
         run: pip install -r requirements.txt
 
-      # Restore story history from previous runs (prevents repeats)
       - name: Restore history cache
         uses: actions/cache/restore@v4
         with:
@@ -64,7 +63,6 @@ jobs:
             python scripts/run_short.py --channel "$CHANNEL" --upload --privacy public
           fi
 
-      # Save history so next run knows what stories already exist
       - name: Save history cache
         uses: actions/cache/save@v4
         if: always()

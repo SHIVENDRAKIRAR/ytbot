@@ -2,7 +2,6 @@ name: Daily Facts Short
 
 on:
   schedule:
-    # Pick a time offset from the ghost_stories workflow to avoid overlap.
     - cron: "0 4 * * *"   # 04:00 UTC ≈ 09:30 IST
     - cron: "0 14 * * *"  # 14:00 UTC ≈ 19:30 IST
   workflow_dispatch:
@@ -23,7 +22,6 @@ env:
   YT_REFRESH_TOKEN_EN: ${{ secrets.YT_REFRESH_TOKEN_EN }}
   # Fallback if either channel-specific token is missing
   YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-
 jobs:
   generate-and-upload:
     runs-on: ubuntu-latest
@@ -45,7 +43,6 @@ jobs:
       - name: Install Python deps
         run: pip install -r requirements.txt
 
-      # Restore facts-channel history (separate from ghost_stories cache).
       - name: Restore history cache
         uses: actions/cache/restore@v4
         with:
@@ -53,7 +50,6 @@ jobs:
           key: story-history-facts-${{ github.run_id }}
           restore-keys: |
             story-history-facts-
-
       - name: Generate & upload Short
         run: |
           TOPIC="${{ github.event.inputs.topic || '' }}"
