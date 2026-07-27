@@ -243,7 +243,7 @@ def main() -> None:
         commit_myth_topic(args.channel, myth_theme_for_commit, myth_topic_for_commit)
 
     # Optional second upload: same rendered MP4 to extra channels (e.g. second bhakti channel).
-    # Uses env var names listed in preset["extra_yt_token_envs"].
+    # Uses env var names listed in preset["extra_yt_token_envs"]
     extra_envs = preset.get("extra_yt_token_envs") or []
     if args.upload and primary_video_path and extra_envs:
         from pipeline.youtube_upload import upload_short
@@ -260,7 +260,6 @@ def main() -> None:
             print(f"   Extra channel video: https://www.youtube.com/shorts/{vid_extra}")
 
     print("\n✓ Done.")
-
 
 if __name__ == "__main__":
     main()

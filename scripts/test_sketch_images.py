@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 Generate images for short video beats (facts / story scenes).
 Delegates generation to pipeline.images.

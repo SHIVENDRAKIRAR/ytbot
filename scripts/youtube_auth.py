@@ -55,7 +55,7 @@ def main() -> None:
     token_out.write_text(creds.to_json(), encoding="utf-8")
     print(f"\n✅ Token saved to {token_out}")
 
-    # Also print the refresh token so user can add it to GitHub Secrets
+    # Also print the refresh token so user can add it to GitHub Secret
     token_data = json.loads(creds.to_json())
     print("\n── For GitHub Actions ──")
     print("Add these as Repository Secrets (Settings → Secrets → Actions):\n")
